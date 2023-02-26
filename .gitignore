@@ -2,4 +2,8 @@ Unit1/MarsWeek/.vscode/
 Unit1/MarsWeek/bin/
 Unit1/MarsWeek/src/*.class
 Unit1/MarsWeek/lib/
-
+.vscode/
+bin/
+Unit2/CupcakeWeek/.vscode/
+Unit2/CupcakeWeek/lib
+.gitignore
