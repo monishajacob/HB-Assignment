@@ -6,3 +6,13 @@ Unit1/MarsWeek/lib/
 bin/
 Unit2/CupcakeWeek/.vscode/
 Unit2/CupcakeWeek/lib
+Unit3/.settings
+Unit3/target/
+Unit3/src/test/
+Unit3/.classpath
+Unit3/.project
+Unit3/mvnw
+Unit3/mvnw.cmd
+Unit3/pom.xml
+Unit3/src/main/resources/application.properties
+Unit3/src/main/resources/hibernate.cfg.xml
