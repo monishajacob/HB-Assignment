@@ -13,7 +13,7 @@ public class BestMovieService {
 
 //	Setter Injection
 //	@Autowired
-//	public void setMovie(Movie newMovie) {
+//	public void setMovie(@Qualifier("batmanMovie") Movie newMovie) {
 //		movie = newMovie;
 //	}
 

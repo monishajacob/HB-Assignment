@@ -33,19 +33,27 @@ public class MovieController {
 		@SuppressWarnings("unchecked")
 		List<MovieEntity> movieEntityList = session.createQuery("from MovieEntity").list();
 		movieEntityList.sort(Comparator.comparing(movieEntity -> movieEntity.getVotes().size()));
+		
+		if(movieEntityList.size() != 0) {
+			MovieEntity movieWithMostVotes = movieEntityList.get(movieEntityList.size() - 1);
+			List<String> voterNames = new ArrayList<>();
+			for (VoteEntity vote : movieWithMostVotes.getVotes()) {
+				voterNames.add(vote.getVoterName());
+			}
 
-		MovieEntity movieWithMostVotes = movieEntityList.get(movieEntityList.size() - 1);
-		List<String> voterNames = new ArrayList<>();
-
-		for (VoteEntity vote : movieWithMostVotes.getVotes()) {
-			voterNames.add(vote.getVoterName());
+			String voterNamesList = String.join(",", voterNames);
+			if (movieWithMostVotes.getTitle() != null) {
+				model.addAttribute("bestMovie", movieWithMostVotes.getTitle());
+			}else {
+				model.addAttribute("bestMovie", "No Title");
+			}
+			if(voterNamesList != null) {
+				model.addAttribute("bestMovieVoters", voterNamesList);
+			}else {
+				model.addAttribute("bestMovieVoters", "Empty");
+			}
 		}
-
-		String voterNamesList = String.join(",", voterNames);
-
-		model.addAttribute("bestMovie", movieWithMostVotes.getTitle());
-		model.addAttribute("bestMovieVoters", voterNamesList);
-
+		
 		session.getTransaction().commit();
 
 		return "bestMovie";
@@ -108,7 +116,7 @@ public class MovieController {
 
 		session.beginTransaction();
 
-//		session.persist(movieEntity);
+		session.save(movieEntity);
 
 		session.getTransaction().commit();
 
